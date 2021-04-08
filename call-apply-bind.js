@@ -24,7 +24,7 @@ function isArrayLike(o) {
 }
 const _apply=(...args)=>{
   const [context,...other]=args;
-  context=context?Object(context):window;
+  context=context ? Object(context) : window;
   const _symbol=Symbol('特殊属性');
   context[_symbol]=this;
   let res;
@@ -44,12 +44,11 @@ const _apply=(...args)=>{
  * 返回一个新的函数
  */
 const _bind=(...args)=>{
-  const _copy=this;
   const [context,...other]=args;
   const findFn=(...params)=>{
-    context=new.target?this:Object(context);
-    return _copy.call(context,...args,...params);
+    context=new.target ? this:Object(context);
+    return this.call(context,...args,...params);
   }
-  if(_copy.prototype) findFn.prototype=_copy.prototype;
+  if(this.prototype) findFn.prototype=this.prototype;
   return findFn;
 }

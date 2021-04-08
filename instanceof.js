@@ -14,7 +14,7 @@ const _instanceof=function(left,right){
   while(left=Object.getPrototypeOf(left)){
     if(left===rightPrototype) return true;
   }
-  if(!Object.getPrototypeOf(left)) return false;
+  return false;
 }
 
 const obj={a:1}
