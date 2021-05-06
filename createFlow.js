@@ -1,5 +1,5 @@
-// 异步并行
-const asyncParallel=(...fns)=>{
+// 异步并行  ,fn这个函数返回一个promise
+const asyncParallel_p=(...fns)=>{
   let count=0;
   return function(...args){
     const [cb,...others]=args;
@@ -7,6 +7,19 @@ const asyncParallel=(...fns)=>{
       await fn.apply(fn,others);
       count++;
       if(count===fns.length) cb();
+    })
+  }
+}
+
+const asyncParallel=(...fns)=>{
+  return function(...args){
+    let count=0;
+    const [cb,...others]=args;
+    fns.forEach(fn=>{
+      Promise.resolve(fn(...args)).then(res=>{
+        ++count;
+        if(count===this.tasks.length) return cb();
+      })
     })
   }
 }

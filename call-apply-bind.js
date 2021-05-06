@@ -1,6 +1,6 @@
 
-const _call=(...args)=>{
-  const [context,...other]=args;
+const _call=function(...args){
+  let [context,...other]=args;
   context=context ? Object(context):window;
   const _symbol=Symbol('特殊属性symbol');
   context[_symbol]=this;
@@ -22,8 +22,8 @@ function isArrayLike(o) {
       return false
     }                  
 }
-const _apply=(...args)=>{
-  const [context,...other]=args;
+const _apply=function(...args){
+  let [context,...other]=args;
   context=context ? Object(context) : window;
   const _symbol=Symbol('特殊属性');
   context[_symbol]=this;
@@ -43,8 +43,8 @@ const _apply=(...args)=>{
 /**
  * 返回一个新的函数
  */
-const _bind=(...args)=>{
-  const [context,...other]=args;
+const _bind=function(...args){
+  let [context,...other]=args;
   const findFn=(...params)=>{
     context=new.target ? this:Object(context);
     return this.call(context,...args,...params);

@@ -10,9 +10,9 @@
  * @param {*} options
  * 三个临界值：
  */
-const throttle=(fn, waiting = 1000, options) =>{
+const throttle=(fn, waiting = 1000, option) =>{
   let preTime = new Date(0).getTime(),
-      options = options || {
+      options = option || {
         firstTime: true,
         endTime: false,
       },
@@ -43,10 +43,10 @@ const throttle=(fn, waiting = 1000, options) =>{
   return _throttle;
 }
 //这个逻辑不易懂，不清晰
-function throttle_Mt(fn, waiting = 1000, options) {
+function throttle_Mt(fn, waiting = 1000, option) {
   let preTime,
     timer,
-    options = options || { firstTime: false, endTime: true };
+    options = option || { firstTime: false, endTime: true };
   let _throttle = (...args) => {
     preTime = !!options.firstTime ? new Date(0).getTime() : new Date().getTime;
     let nowTime = new Date().getTime();
@@ -98,4 +98,5 @@ const  debounce=function(fn,waiting=1000,immediate=true){
         clearTimeout(timer);
         timer=null;
     }
+    return _debounce;
 }
