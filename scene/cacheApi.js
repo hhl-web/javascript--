@@ -67,24 +67,19 @@
   
   (async () => {
       console.log('111',
-  //                 { id : 0} +1   id:{id: 1} +1
           await Promise.all([cachedApi("a"), cachedApi("b"), cachedApi("a")])
       );
       // 一秒钟后输出 [ { req: "a", id: 0 }, { req: "b", id: 1 }, { req: "a", id: 0 } ]
   
       console.log(
-  //       id 2 +1  id 3 +1  lock 不加
           await Promise.all([cachedApi("a"), cachedApi("b"), cachedApi("a")])
       );
       // 马上输出 [ { req: "a", id: 0 }, { req: "b", id: 1 }, { req: "a", id: 0 } ]
   
       await new Promise((r) => setTimeout(r, 1000));
       console.log(
-  //       id 4 +1   id 5 +1 lock不加
           await Promise.all([cachedApi("a"), cachedApi("b"), cachedApi("a")])
       );
       // 马上输出 [ { req: "a", id: 2 }, { req: "b", id: 3 }, { req: "a", id: 2 } ]
-    
-  //   5 6
   })();
   

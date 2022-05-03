@@ -1,4 +1,3 @@
-// 先定义三个常量表示状态
 const PENDING = "pending";
 const FULFILLED = "fulfilled";
 const REJECTED = "rejected";
@@ -99,7 +98,7 @@ class MyPromise {
   //finally方法
   finally(callback) {
     return this.then(
-      value => MyPromise.resolve(callback()).then(() => value),             //执行回调,并returnvalue传递给后面的then
+      value => MyPromise.resolve(callback()).then(() => value),             //执行回调,并return value传递给后面的then
       reason => MyPromise.resolve(callback()).then(() => { throw reason })  //reject同理
     )
   }
@@ -152,40 +151,28 @@ class MyPromise {
       var length = promiseList.length;
       var result = [];
       var count = 0;
-  
-      if (length === 0) {
-        return resolve(result);
-      } else {
-        for (var i = 0; i < length; i++) {
-          (function (i) {
-            var currentPromise = MyPromise.resolve(promiseList[i]);
-  
-            currentPromise.then(
-              function (value) {
-                count++;
-                result[i] = {
-                  status: "fulfilled",
-                  value: value,
-                };
-                if (count === length) {
-                  return resolve(result);
-                }
-              },
-              function (reason) {
-                count++;
-                result[i] = {
-                  status: "rejected",
-                  reason: reason,
-                };
-                if (count === length) {
-                  return resolve(result);
-                }
-              }
-            );
-          })(i);
-        }
-      }
-    });
-  };
-  
+      if(length ===0 ) resolve([]);
+      promiseList.forEach((p,index)=>{
+        MyPromise.resolve(p).then((res)=>{
+          result[index] = {
+            value:res,
+            status:'fulfilled'
+          }
+          count++;
+          if(count===length){
+            resolve(result)
+          }
+        }).catch(err=>{
+          result[index] = {
+            value:err,
+            status:'rejected'
+          }
+          count++;
+          if(count===length){
+            resolve(result)
+          }
+        })
+      })
+    })
+  }
 }
