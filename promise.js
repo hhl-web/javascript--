@@ -40,3 +40,45 @@ Promise.prototype._finally=function(fn){
     })
   })
 }
+
+Promise.prototype.allsettled =function(promiseList){
+  let result =[];
+  let _promise =promiseList.map((p)=>p instanceof Promise?p:Promise.resolve(p));
+  let count = _promise.length;;
+  return new Promise((resolve,reject)=>{
+    _promise.forEach((p)=>{
+      p.then((res)=>{
+        result[i]={
+          status:'fulfilled',
+          value:res
+        }
+        count --;
+        if(count ===0) resolve(result);
+      },(err)=>{
+        result[i]={
+          status:'rejecrejectedted',
+          value:err
+        }
+        count --;
+        if(count ===0) resolve(result);
+      })
+    })
+  })
+}
+
+
+Promise.prototype.any=function(promiseList){
+  let count=0;
+  return new Promise((resolve,reject)=>{
+    promiseList.forEach((p)=>{
+      Promise.resolve(p).then((res)=>{
+        resolve(res);
+      },(err)=>{
+        count++;
+        if(count ===promiseList.length){
+          reject(new AggregateError('All promises were rejected'))
+        }
+      })
+    })
+  })
+}

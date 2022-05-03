@@ -40,7 +40,7 @@ class LfuCache{
       this.freqMap[1].push(key);
       this.map[key]={
         value:value,
-        frep:1;
+        frep:1
       }
     }else{
       obj.value=value;

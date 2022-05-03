@@ -32,7 +32,6 @@ function inheritPrototype(son, father) {
   const fatherFnPrototype = Object.create(father.prototype); 
   son.prototype = fatherFnPrototype; // 设置father.prototype为son.prototype的原型
   son.prototype.constructor = son; // 修正constructor 指向
-  Object.setPrototypeOf(son,father);
 }
 inheritPrototype(sonFn, fatherFn)
 sonFn.prototype.sonFnSome = '子类原型对象的属性或者方法'

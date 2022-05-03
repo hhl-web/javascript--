@@ -24,18 +24,18 @@ Array.prototype.filter=function(fn){
 // const fliterArr=arr_f.filter(item=>item > 2);
 // console.log(fliterArr);
 
-Array.prototype.reduce=function(fn,initValue){
+Array.prototype.reduce=function(fn,initValue){   
   let result=initValue?initValue:this[0];
-  for(let i=initValue ? 1:0;i<this.length;i++){
+  for(let i=initValue ? 0:1;i<this.length;i++){
     if(!this.hasOwnProperty(i)) continue;
     result=fn(result,this[i],i,this);
   }
   return result;
 }
 // 使用
-// const arr_r=[1,2,3,,5];
-// const reduceArr=arr_r.reduce((a,b)=>a*b,2);
-// console.log(reduceArr);
+const arr_r=[1,2,3,,5];
+const reduceArr=arr_r.reduce((a,b)=>a*b,2);
+console.log(reduceArr);
 
 Array.prototype.every=function(fn){
   let bool=true;
@@ -109,6 +109,17 @@ function flattening(arr){
   return res;
 }
 
+
+// 数组去重
+function unique(arr){
+  let result =[];
+  for(let i=0;i<arr.length;i++){
+    if(result.indexOf(arr[i])===-1){
+      result.push(arr[i])
+    }
+  }
+  return result;
+}
 
 
 

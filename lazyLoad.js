@@ -7,7 +7,7 @@ const lazyLoad=function(imgs){
     imgs.forEach((img,index)=>{
       const react=img.getBoundingClientRect();
       if(react.top<window.innerHeight){
-        img.src=dataset.src;
+        img.src=img.dataset.src;
         count++;
         deleteImgs.push(index);
         if(count===imgs.length) document.removeEventListener('scroll',lazyLoad);

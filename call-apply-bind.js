@@ -1,7 +1,11 @@
 
-const _call=function(...args){
+Function.prototype.myBind=function(...args){
   let [context,...other]=args;
-  context=context ? Object(context):window;
+  if(context === null || context === undefined){
+    context=window;
+  }else{
+    context=Object(context);
+  }
   const _symbol=Symbol('特殊属性symbol');
   context[_symbol]=this;
   const res=context[_symbol](...other);
@@ -22,9 +26,13 @@ function isArrayLike(o) {
       return false
     }                  
 }
-const _apply=function(...args){
+Function.prototype.myApply=function(...args){
   let [context,...other]=args;
-  context=context ? Object(context) : window;
+  if(context === null || context === undefined){
+    context=window;
+  }else{
+    context=Object(context);
+  }
   const _symbol=Symbol('特殊属性');
   context[_symbol]=this;
   let res;
@@ -43,7 +51,7 @@ const _apply=function(...args){
 /**
  * 返回一个新的函数
  */
-const _bind=function(...args){
+Function.prototype.myBind=function(...args){
   let [context,...other]=args;
   const findFn=(...params)=>{
     context=new.target ? this:Object(context);

@@ -27,7 +27,7 @@ const asyncParallel=(...fns)=>{
 // 异步串行
 const asyncSerial=(...fns)=>{
   const [first,...others]=fns;
-  return function(...args)=>{
+  return (...args)=>{
     return others.reduce((a,b)=>Promise.resolve(a()).then(()=>b(...args)),first(...args));
   }
 }
