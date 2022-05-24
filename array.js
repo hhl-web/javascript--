@@ -93,7 +93,26 @@ function flattening(arr) {
   return res;
 }
 
+// 递归实现  数组的顺序和还没拉平的数组一致
+function flattening(arr) {
+  if (!Array.isArray(arr)) return;
+  let res = [];
+  function next(arr) {
+    let index = 0;
+    while (index <= arr.length - 1) {
+      if (Array.isArray(arr[index])) {
+        arr[index++].forEach(item => Array.isArray(item) ? next(item) : res.push(item));
+      } else {
+        res.push(arr[index++]);
+      }
+    }
+  }
+  next(arr);
+  return res;
+}
 
+let arr=[1,2,3,[2,33,4],3,[35,44,[67,90,[3322]]]];
+console.log(flattening(arr))
 /*
 * 数组去重
 */
@@ -123,7 +142,7 @@ function unique_includes(arr) {
 }
 
 // es6 set
-function unique_Set(arr){
+function unique_Set(arr) {
   if (!Array.isArray(arr)) return;
   return Array.from(new Set(arr));
 }

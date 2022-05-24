@@ -1,4 +1,6 @@
-// /**案例一 */
+/**案例一 注意await也是promise 但是需要一个个promise添加进去 
+ * 所以同一个await里面的promise的顺序可能被其他的promise插队
+*/
 async function async1() {
     console.log("async1 start");
     await async2();

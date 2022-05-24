@@ -1,6 +1,6 @@
 const imgs=Array.from(document.querySelectorAll('img'));
 
-const lazyLoad=function(imgs){
+const lazyLoad1=function(imgs){
   let count=0;
   const deleteImgs=[];
   const handler=()=>{
@@ -18,7 +18,7 @@ const lazyLoad=function(imgs){
   return handler();
 }
 
-const lazyLoad=function(imgs){
+const lazyLoad2=function(imgs){
   const observer=new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.intersectionRatio>0){

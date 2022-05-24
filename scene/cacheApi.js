@@ -1,4 +1,4 @@
-/**
+ /**
  * 缓存异步接口
  * - 第一次请求缓存接口的时候，和调用原异步接口效果一样
  * - 缓存接口根据入参缓存原异步接口返回值
@@ -7,8 +7,7 @@
  * @param fn 原异步接口
  * @returns 缓存接口
  */
-
- const mockApi=(()=>{
+const mockApi=(()=>{
     let id =0;
     return async (req)=>{
       await  new Promise((r)=>setTimeout(r,1000));
@@ -18,7 +17,8 @@
       }
     }
   })();
-  
+ 
+
   /**
   一个promsie可以then多次 ，但是值是相同的
   利用lock的概念来控制请求次数

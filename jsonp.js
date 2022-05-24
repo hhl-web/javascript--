@@ -8,6 +8,7 @@ const jsonp =({url,params,callbackName})=>{
         return dataSrc;
     }
     return new Promise((resove,reject)=>{
+        // 利用script进行通讯,传入callback来接收响应数据
         const scriptEle =document.createElement('script');
         scriptEle.src =getUrl();
         document.body.appendChild(scriptEle);

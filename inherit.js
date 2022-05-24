@@ -17,7 +17,8 @@ class Sub extends Super{
 const sub=new Sub({name:'hhl'});
 const sup=new Super();
 console.log(sub,sup);
-console.log(Sub.getAge);
+// console.log(Sub.getAge);
+console.log(Sub.__proto__ === Super);
 
 
 function fatherFn(...arr) {
@@ -26,6 +27,7 @@ function fatherFn(...arr) {
 }
 fatherFn.prototype.fatherFnSome = '父类原型对象的属性或者方法';
 function sonFn() {
+  fatherFn.call(this, '借用构造继承'); 
   this.obkoro1 = '子类的this属性';
 }
 function inheritPrototype(son, father) {
@@ -33,7 +35,15 @@ function inheritPrototype(son, father) {
   son.prototype = fatherFnPrototype; // 设置father.prototype为son.prototype的原型
   son.prototype.constructor = son; // 修正constructor 指向
 }
+// 1
 inheritPrototype(sonFn, fatherFn)
 sonFn.prototype.sonFnSome = '子类原型对象的属性或者方法'
 const sonFnInstance = new sonFn();
-console.log('寄生组合式继承子类实例', sonFnInstance)
+console.log('寄生组合式继承子类实例', sonFnInstance.some,sonFnInstance)
+
+// 2
+// Object.setPrototypeOf(sonFn.prototype,fatherFn.prototype);
+// sonFn.prototype.sonFnSome = '子类原型对象的属性或者方法'
+// const sonFnInstance = new sonFn();
+// Object.setPrototypeOf(sonFnInstance,fatherFn.prototype);
+// console.log('寄生组合式继承子类实例', sonFnInstance.fatherFnSome)
