@@ -23,7 +23,8 @@ const mockApi=(()=>{
   一个promsie可以then多次 ，但是值是相同的
   利用lock的概念来控制请求次数
   map的思想做缓存
-  await 下面的代码是微任务的存在形式 等本轮主线程的代码执行完毕 会去清空本轮产生的微任务
+  await 下面的代码是微任务的存在形式
+  等本轮主线程的代码执行完毕 会去清空本轮产生的微任务
   */
   function cacheApi(...args){
     const api =args[0];

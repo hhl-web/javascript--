@@ -30,21 +30,11 @@ class TaskConcurrent {
         this.size++;
         const { fn, params, resolve, reject } = this.taskQueue.pop();
         // this.runTask(fn, params, resolve, reject);
-        const taskPromise =  this.runTask(fn, params, resolve, reject);
+        const taskPromise = this.runTask(fn, params, resolve, reject);
         resolve(taskPromise);
 
     }
-    runTask(fn, params, resolve,reject) {
-        // Promise.resolve(fn(params)).then((res)=>{
-        //     console.log('异步结束', res);
-        //     resolve(res)
-        //     this.size--;
-        //     this.queueOutTask();
-        // },(err)=>{
-        //     this.size--;
-        //     this.queueOutTask();
-        //     reject(err);
-        // })
+    runTask(fn, params, resolve, reject) {
         const taskPromise = Promise.resolve(fn(params))
         taskPromise.then(res => {
             console.log('异步结束', res)
@@ -65,6 +55,7 @@ class TaskConcurrent {
 // 模拟异步任务1
 // 调用addTask一个一个添加异步任务
 const task = (timeout) => new Promise((resolve) => setTimeout(() => {
+    console.log(timeout);
     resolve(timeout) // 返回值
 }, timeout))
 const taskList = [5000, 3000, 1000, 10300, 8000, 2000, 4000, 5000]
@@ -73,7 +64,8 @@ async function startNoConcurrentControl() {
     const cc = new TaskConcurrent(2)
     console.time('异步执行时间')
     // 添加所有异步任务
-    const resArr = await Promise.all(taskList.map((item) => cc.addTask(task, item)))
+    const resArr = await Promise.all(taskList.map((item) => cc.addTask(task, item)))    
+    // const resArr = await Promise.all(taskList.map((item) => task(item)));
     console.log('异步任务返回值', resArr)
     console.timeEnd('异步执行时间')
 }

@@ -13,13 +13,13 @@ class MyPromise {
     let _resolve = (val) => {
       //把resolve执行回调的操作封装成一个函数,放进setTimeout里,以兼容executor是同步代码的情况
       const run = () => {
-        if(this._status !== PENDING) return   // 对应规范中的"状态只能由pending到fulfilled或rejected"
+        if (this._status !== PENDING) return   // 对应规范中的"状态只能由pending到fulfilled或rejected"
         this._status = FULFILLED              // 变更状态
         this._value = val                     // 储存当前value
 
         // 这里之所以使用一个队列来储存回调,是为了实现规范要求的 "then 方法可以被同一个 promise 调用多次"
         // 如果使用一个变量而非队列来储存回调,那么即使多次p1.then()也只会执行一次回调
-        while(this._resolveQueue.length) {
+        while (this._resolveQueue.length) {
           const callback = this._resolveQueue.shift()
           callback(val)
         }
@@ -29,10 +29,10 @@ class MyPromise {
     // 实现同resolve
     let _reject = (val) => {
       const run = () => {
-        if(this._status !== PENDING) return   // 对应规范中的"状态只能由pending到fulfilled或rejected"
+        if (this._status !== PENDING) return   // 对应规范中的"状态只能由pending到fulfilled或rejected"
         this._status = REJECTED               // 变更状态
         this._value = val                     // 储存当前value
-        while(this._rejectQueue.length) {
+        while (this._rejectQueue.length) {
           const callback = this._rejectQueue.shift()
           callback(val)
         }
@@ -48,7 +48,7 @@ class MyPromise {
     // 根据规范，如果then的参数不是function，则我们需要忽略它, 让链式调用继续往下执行
     typeof resolveFn !== 'function' ? resolveFn = value => value : null
     typeof rejectFn !== 'function' ? rejectFn = error => error : null
-  
+
     // return一个新的promise
     return new Promise((resolve, reject) => {
       // 把resolveFn重新包装一下,再push进resolve执行队列,这是为了能够获取回调的返回值进行分类讨论
@@ -62,9 +62,9 @@ class MyPromise {
           reject(error)
         }
       }
-  
+
       // reject同理
-      const rejectedFn  = error => {
+      const rejectedFn = error => {
         try {
           let x = rejectFn(error)
           x instanceof Promise ? x.then(resolve, reject) : resolve(x)
@@ -72,7 +72,7 @@ class MyPromise {
           reject(error)
         }
       }
-  
+
       switch (this._status) {
         // 当状态为pending时,把then回调push进resolve/reject执行队列,等待执行
         case PENDING:
@@ -104,7 +104,7 @@ class MyPromise {
   }
 
   static resolve(value) {
-    if(value instanceof MyPromise) return value //根据规范, 如果参数是Promise实例, 直接return这个实例
+    if (value instanceof MyPromise) return value //根据规范, 如果参数是Promise实例, 直接return这个实例
     return new MyPromise(resolve => resolve(value))
   }
   static reject(reason) {
@@ -120,7 +120,7 @@ class MyPromise {
           val => {
             index++
             result[i] = val
-            if(index === promiseArr.length) {
+            if (index === promiseArr.length) {
               resolve(result)
             }
           },
@@ -146,33 +146,47 @@ class MyPromise {
       }
     })
   }
-  static allSettled (promiseList){
+  static allSettled(promiseList) {
     return new MyPromise(function (resolve) {
       var length = promiseList.length;
       var result = [];
       var count = 0;
-      if(length ===0 ) resolve([]);
-      promiseList.forEach((p,index)=>{
-        MyPromise.resolve(p).then((res)=>{
+      if (length === 0) resolve([]);
+      promiseList.forEach((p, index) => {
+        MyPromise.resolve(p).then((res) => {
           result[index] = {
-            value:res,
-            status:'fulfilled'
+            value: res,
+            status: 'fulfilled'
           }
           count++;
-          if(count===length){
+          if (count === length) {
             resolve(result)
           }
-        }).catch(err=>{
+        }).catch(err => {
           result[index] = {
-            value:err,
-            status:'rejected'
+            value: err,
+            status: 'rejected'
           }
           count++;
-          if(count===length){
+          if (count === length) {
             resolve(result)
           }
         })
       })
     })
   }
+}
+
+// 重写数组的方式,如果作为参数的 Promise 实例
+// 自己定义了catch方法，那么它一旦被rejected
+// 并不会触发Promise.all()的catch方法
+Promise.allSettled = function (promises) {
+  const mapPromise = promises.map(p => p.then(value => ({
+    status: 'rejected',
+    value: reason
+  })).catch(e => ({
+    status: 'rejected',
+    value: reason
+  })));
+  return Promise.all(mapPromise);
 }
