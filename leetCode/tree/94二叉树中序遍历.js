@@ -1,7 +1,4 @@
-/**
- * 按照访问左子树——根节点——右子树的方式遍历这棵树：中序遍历
- */
-
+//   按照访问左子树——根节点——右子树的方式遍历这棵树：中序遍历
 const inorderTraversal1 =function(root){
     const stack =[];
     const result =[];

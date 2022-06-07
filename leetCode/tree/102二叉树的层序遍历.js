@@ -1,5 +1,5 @@
 
-// 根据树的层级输出值
+// 根据树的层级输出值:层序
 function levelOrder(root){
    let result =[];
    if(!root) return [];
