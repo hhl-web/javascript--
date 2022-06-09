@@ -2,7 +2,7 @@
 
 function postorderTraversal(root){
     const result =[];
-    if(!root) return;
+    if(!root) return result;
     const stack =[root];
     const outputStack = []
     while(stack.length){
