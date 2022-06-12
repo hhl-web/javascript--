@@ -1,5 +1,5 @@
 
-
+// 左子树-右子树-根
 function postorderTraversal(root){
     const result =[];
     if(!root) return result;
