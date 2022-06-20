@@ -21,7 +21,7 @@ const threeSum = function (nums) {
                 const arrToString = String(arr);
                 if (!setList.has(arrToString)) {
                     result.push(arr);
-                    setList.add(arrToString)
+                    setList.add(arrToString);
                 }
             }
             hash[nums[j]] = j;

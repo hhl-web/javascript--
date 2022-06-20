@@ -1,27 +1,4 @@
-// function pathSum(root,targetNum){
-//     // if(!root) return [];
-//     const res= [];
-//     const dfs =(root,value,nums)=>{
-//         nums.push(root.val);
-//         if(value === targetNum){
-//             res.push(nums);
-//         }
-//         if(root.left) dfs(root.left,value + root.left.val,nums.slice());
-//         if(root.right) dfs(root.right,value+root.right.val,nums.slice())
-//     }
-//     // dfs(root,root.val,[])
-//     return root && dfs(root,root.val,[]) || res;
-// }
 
-
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
 /**
  * if 条件语句单分支执行
  * @param {TreeNode} root

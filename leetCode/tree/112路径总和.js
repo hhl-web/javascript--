@@ -10,7 +10,7 @@ function hasPathSum(root, targetNum) {
     if (!root) return false;
     let result = false;
     const dfs = (root, value) => {
-        if (!root.left && root.right && value === targetNum) {
+        if (!root.left && !root.right && value === targetNum) {
             return result = true;
         }
         if (root.left) dfs(root.left, value + root.left.val);

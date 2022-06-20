@@ -13,4 +13,4 @@ let searchRange =function(nums,target){
     }
     return result;
 }
-console.log('result',searchRange([0,0,0,1,2,2,3], 2));
+console.log('result',searchRange([0,0,0,1,2,2,3], 0));

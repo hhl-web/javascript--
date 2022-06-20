@@ -28,6 +28,7 @@ let lengthOfLongestSubstring = function (s) {
             temp.push(s[i]);
         }
     }
+    console.log(result)
     return result.length;
 }
 

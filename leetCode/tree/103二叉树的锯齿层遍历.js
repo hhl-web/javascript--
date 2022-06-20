@@ -3,7 +3,6 @@ let zigzagLevelOrder = function(root) {
     if(!root) return [];
     const q = [[root,0]];
     const result =[];
-    let flag =true;
     while(q.length){
         const [node,level] =q.shift();
         if(!result[level]){
