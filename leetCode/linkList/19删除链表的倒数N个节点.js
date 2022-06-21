@@ -5,24 +5,24 @@
 让 beforeLastN 指向 head。假定 cur 为链表的尾节点，那么 beforeLastN 后的第一个节点为目标删除节点。
 接下来只需同时向后移动 beforeLastN 和 cur 直到 cur 真正指向链表尾节点即可。
  */
-const removeNthFromEnd =(head,n)=>{
-    if(!head.next) return null;
+const removeNthFromEnd = (head, n) => {
+    if (!head.next) return null;
 
     let fast = head;
-    let slow =head;
-    while(n>0){
-        if(!fast.next) break;
-        fast =fast.next;
+    let slow = head;
+    while (n > 0) {
+        if (!fast.next) break;
+        fast = fast.next;
         n--
     }
-    if(n>0){
+    if (n > 0) {
         return head.next
     }
 
-    while(fast.next){
-        fast =fast.next;
-        slow =slow.next;
+    while (fast.next) {
+        fast = fast.next;
+        slow = slow.next;
     }
-    slow.next =slow.next.next;
+    slow.next = slow.next.next;
     return head;
 }

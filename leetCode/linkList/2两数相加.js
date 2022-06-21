@@ -29,4 +29,5 @@ const addTwoNums = function (l1, l2) {
     }
     return l3.next;
 }
+
 console.log(addTwoNums([2, 4, 3], [5, 6, 4]))
