@@ -12,7 +12,7 @@
  这道题中，传入的参数 node 为要被删除的节点，无法定位到该节点的上一个节点
 
  */
-
+// 值要发生变化  指针指向也要发生变化
  const deleteNode =(node)=>{
     node.val = node.next.val;
     node.next =node.next.next;
