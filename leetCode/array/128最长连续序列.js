@@ -18,3 +18,7 @@ const longestConsecutive = function (nums) {
     }
     return globalLongest;
 }
+
+const nums = [0,1,0,3,2,3];
+
+console.log(longestConsecutive(nums))
