@@ -38,7 +38,6 @@ var dailyTemperatures = function(T) {
         stack.pop()
   
       }
-  
       stack.push({
         value:T[i],
         index:i
