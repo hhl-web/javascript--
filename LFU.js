@@ -1,3 +1,10 @@
+
+/**
+ * LFU（Least Frequently Used）算法，即最少访问算法，根据访问缓存的历史频率来淘汰数据，
+ * 核心思想是“如果数据在过去一段时间被访问的次数很少，那么将来被访问的概率也会很低”。
+ */
+
+// 算法1
 class LfuCache{
   constructor(limit){
     this.limit=limit;
@@ -50,7 +57,7 @@ class LfuCache{
 }
 
 
-
+// 算法2
 function Cache(key, value) {
   this.key = key;
   this.value = value;

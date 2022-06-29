@@ -96,22 +96,36 @@ function flattening(arr) {
 // 递归实现  数组的顺序和还没拉平的数组一致
 function flattening(arr) {
   if (!Array.isArray(arr)) return;
-  let res = [];
-  function next(arr) {
-    let index = 0;
-    while (index <= arr.length - 1) {
-      if (Array.isArray(arr[index])) {
-        arr[index++].forEach(item => Array.isArray(item) ? next(item) : res.push(item));
+  // let res = [];
+  // function next(arr) {
+  //   let index = 0;
+  //   while (index <= arr.length - 1) {
+  //     if (Array.isArray(arr[index])) {
+  //       arr[index++].forEach(item => Array.isArray(item) ? next(item) : res.push(item));
+  //     } else {
+  //       res.push(arr[index++]);
+  //     }
+  //   }
+  // }
+  // next(arr);
+  // return res;
+  const dfs = (data) => {
+    if (!Array.isArray(arr)) return data;
+    let idx = 0;
+    let res = [];
+    while (idx < data.length) {
+      if (Array.isArray(data[idx])) {
+        data[idx++].forEach(item => Array.isArray(item) ? res.push(...dfs(item)) : res.push(item));
       } else {
-        res.push(arr[index++]);
+        res.push(data[idx++]);
       }
     }
+    return res;
   }
-  next(arr);
-  return res;
+
 }
 
-let arr=[1,2,3,[2,33,4],3,[35,44,[67,90,[3322]]]];
+let arr = [1, 2, 3, [2, 33, 4], 3, [35, 44, [67, 90, [3322]]]];
 console.log(flattening(arr))
 /*
 * 数组去重
