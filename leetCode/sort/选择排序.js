@@ -1,3 +1,4 @@
+
 const selectSort = (arr) => {
     for (let i = 0; i < arr.length; i++) {
         let min = i;
@@ -13,5 +14,6 @@ const selectSort = (arr) => {
     return arr;
 }
 
-const arr = [2, 5, 4, 1, 3, 0]
+const arr = [2, 5, 4, 1, 3, 0];
 console.log(selectSort(arr));
+// 嵌套循环找最小值
