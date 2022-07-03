@@ -1,3 +1,4 @@
+// jsonp本质上是利用script标签进行数据通讯，script 的src属性要考虑url，params，callback
 const jsonp =({url,params,callbackName})=>{
     const getUrl=()=>{
         let dataSrc ='';

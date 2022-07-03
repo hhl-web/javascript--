@@ -18,7 +18,7 @@ function cycle (target) {
   _cycle(target);
   return target;
 }
-
+// 如何判断JS对象中是否存在循环引用
 
 function anotherFn(){/*...*/};
 var anotherObj={

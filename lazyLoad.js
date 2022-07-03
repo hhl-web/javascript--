@@ -10,7 +10,7 @@ const lazyLoad1=function(imgs){
         img.src=img.dataset.src;
         count++;
         deleteImgs.push(index);
-        if(count===imgs.length) document.removeEventListener('scroll',lazyLoad);
+        if(count===imgs.length) document.removeEventListener('scroll',lazyLoad1);
       }
     });
     imgs=imgs.filter((_,index)=>!deleteImgs.includes(index));
