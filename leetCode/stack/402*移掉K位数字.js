@@ -13,13 +13,13 @@ var removeKdigits = function (num, k) {
     while (k--) {
         while (stack[idx] <= stack[idx + 1]) idx++;
         stack.splice(idx, 1);
-        idx = idx > 0 ? idx - 1 : 0
+        idx = idx > 0 ? idx - 1 : 0;
     }
     let t = 0;
     while (stack[t] === '0') t++;
     return stack.slice(t).join('') || '0'
 };
 
-console.log(removeKdigits(num = "5337", k = 2))
+// console.log(removeKdigits(num = "5337", k = 2))
 console.log(removeKdigits(num = "1432219", k = 3))
 //   console.log(removeKdigits(num = "111111", k = 3))

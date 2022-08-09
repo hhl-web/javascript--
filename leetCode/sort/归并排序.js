@@ -2,9 +2,9 @@ const merge =(left,right)=>{
     const result =[];
     while(left.length && right.length){
         if(left[0]<right[0]){
-            result.push(left.shift())
+            result.push(left.shift());
         }else{
-            result.push(right.shift())
+            result.push(right.shift());
         }
     }
     return result.concat(left,right);

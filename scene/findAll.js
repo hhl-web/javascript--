@@ -9,7 +9,7 @@ function getResult (arr1,arr2){
     if(!Array.isArray(arr1)|| !Array.isArray(arr2)) return [];
     if(arr1.length===0) return arr2;
     if(arr2.length ===0 )return arr1;
-    let result =[]
+    let result =[];
     for(let i= 0;i<arr1.length;i++){
         for(let j=0;j<arr2.length;j++){
             result.push(String(arr1[i]) + String(arr2[j]));

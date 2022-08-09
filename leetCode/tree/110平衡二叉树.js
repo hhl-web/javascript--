@@ -7,10 +7,10 @@ let isBalanced = function(root){
         let left = dfs(root.left);
         let right = dfs(root.right);
         if(Math.abs(left-right)>1){
-            return false;
+            return result =false;
         }
         return Math.max(left,right)+1;
     }
     dfs(root);
-    return result
+    return result;
 }

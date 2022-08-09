@@ -16,13 +16,11 @@ const addTwoNums = function (l1, l2) {
         const v1 = p1 ? p1.val : 0;
         const v2 = p2 ? p2.val : 0;
         const val = v1 + v2 + carry;
-        console.log(v1,v2,val)
         carry = Math.floor(val % 10);
-        p3.next = new ListNode(val % 10)
+        p3.next = new ListNode(val % 10);
         if (p1) p1 = p1.next;
         if (p2) p2 = p2.next;
         p3 = p3.next;
-        console.log(p3)
     }
     if (carry) {
         p3.next = new ListNode(carry);

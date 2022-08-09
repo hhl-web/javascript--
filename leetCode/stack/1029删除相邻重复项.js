@@ -40,12 +40,13 @@ const removeDuplicates =function(s,k){
             stack.push({val,count:1})
         }
     }
-    console.log(stack);
     return stack.reduce((pre,cur)=>{
         return pre + cur.val.repeat(cur.count)
     },'')
 }
+
 console.log(removeDuplicates(s = "deeedbbcccbdaa", k = 3)) // aa
+console.log(removeDuplicates(s = "dedeeccaaa", k = 3))  //dedeecc
 // const removeDuplicates = function (s, k) {
 //     const map = new Map();
 //     const helper = (k, map) => {

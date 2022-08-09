@@ -8,9 +8,9 @@ const longestConsecutive = function (nums) {
     for (let i = 0; i < n; i++) {
         if (!set.has(nums[i] - 1)) {
             let longest = 1;
-            let currentNum = nums[i];
-            while (set.has(currentNum + 1)) {
-                currentNum += 1;
+            let currentMinNum = nums[i];
+            while (set.has(currentMinNum + 1)) {
+                currentMinNum += 1;
                 longest++
             }
             globalLongest = Math.max(globalLongest, longest)

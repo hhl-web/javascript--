@@ -1,4 +1,4 @@
-const topKFrequent =(words,target)=>{
+const topKFrequent =(words,k)=>{
     let map =new Map();
     words.forEach(w=>{
         map.set(w,map.has(w)?map.get(w)+1:1);

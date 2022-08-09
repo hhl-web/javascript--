@@ -6,9 +6,9 @@ const frequencySort =function(s){
         hasMap.set(w,hasMap.has(w)?hasMap.get(w)+1:1);
     });
     let res='';
+    console.log(hasMap,Array.from(hasMap))
     // Array.from将map转成数组
     let array = Array.from(hasMap).sort((a,b)=>a[1]-b[1]);
-    console.log(array)
     for(let i =0;i<array.length;i++){
         const [key,value] = array[i];
         if(value===1){

@@ -74,7 +74,7 @@ LFU.prototype.getCache = function(key) {
       var count = ++this.localCache[i].count;
       console.log('count:', count);
       var result = this.localCache[i];
-      this.localCache.sort((a, b) => {return  b.count - a.count});
+      this.localCache.sort((a, b) => {return  b.count - a.count});  //降序
       return result;
     }
   }

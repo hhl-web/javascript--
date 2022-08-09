@@ -1,3 +1,4 @@
+// 合并两个数组一样的思路
 const mergeTwoLists = (l1, l2) => {
     let res = new ListNode(0);
     let p1 = l1;

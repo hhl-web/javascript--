@@ -3,7 +3,6 @@ const _instanceof=function(left,right){
   const rightPrototype=right.prototype;
   console.log(rightPrototype)
   while(left=Object.getPrototypeOf(left)){
-    console.log(left)
     if(left===rightPrototype) return true;
   }
   return false;

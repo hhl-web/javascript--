@@ -19,6 +19,7 @@ function template2(str) {
         let reg = new RegExp(`{{\\s*(.+?)\\s*}}`);
         while (str.length) {
             const res = reg.exec(str);
+            
             if (res) {
                 let noMatch = str.slice(0, res.index);
                 str = str.slice(res.index);

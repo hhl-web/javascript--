@@ -12,7 +12,6 @@
 // 链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii
 
 
-
 const deleteDuplicates =(head)=>{
     let dumyNode = new ListNode(0);
     dumyNode.next =head;

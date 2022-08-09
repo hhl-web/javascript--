@@ -28,7 +28,6 @@ let scoreOfParentheses = (S) => {
     if (S[i] === '(') {
       stack.push('(');
     }
-    if (S[i] === ')') {
       if (S[i] === ')') {
         if (stack[stack.length - 1] === '(') {
           stack.pop();
@@ -43,7 +42,7 @@ let scoreOfParentheses = (S) => {
           stack.push(2 * temp);
         }
       }
-    }
+
   }
   let sum =0;
   stack.forEach((v)=>sum+=v);

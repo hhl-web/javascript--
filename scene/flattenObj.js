@@ -24,28 +24,28 @@
 // 递归
 function flattenObj(input) {
     if (typeof input !== 'object' || input === null) return;
-    const soucrce = Array.isArray(input) ? [...input] : { ...input };
+    const source = Array.isArray(input) ? [...input] : { ...input };
     const result = {};
-    function noop(soucrce, parentKey = '') {
-        for (const key in soucrce) {
+    function noop(source, parentKey = '') {
+        for (const key in source) {
             let itemKey = ''
-            if (Array.isArray(soucrce)) {
+            if (Array.isArray(source)) {
                 itemKey = parentKey ? `${parentKey}[${key}]` : key;
             } else {
                 itemKey = parentKey ? `${parentKey}.${key}` : key;
             }
-            if (typeof soucrce[key] === 'object' && soucrce[key] !== null) {
-                noop(soucrce[key], itemKey);
+            if (typeof source[key] === 'object' && source[key] !== null) {
+                noop(source[key], itemKey);
             } else {
                 if (!parentKey) {
-                    soucrce[key] ? result[key] = soucrce[key] : ''
+                    source[key] ? result[key] = source[key] : ''
                 } else {
-                    soucrce[key] ? result[`${itemKey}`] = soucrce[key] : ''
+                    source[key] ? result[`${itemKey}`] = source[key] : ''
                 }
             }
         }
     }
-    noop(soucrce);
+    noop(source);
     return result;
 }
 

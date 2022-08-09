@@ -29,7 +29,16 @@ console.log("script end");
 
 
 
+// script start
+//    async1 start   
+// async2   
+//  promise1  
+// script end
 
+// bulalala 
+// promise2
+// async1 end
+// setTimeout
 
 
 

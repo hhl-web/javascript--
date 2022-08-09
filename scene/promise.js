@@ -87,4 +87,26 @@ helper(login, 3).then((res => {
  *  promise状态机 ，then是自定义函数执行之后会执行的函数
  *  promsie串行       利用递归
  *  promise最大并发数  利用队列 + 递归
+ *  批量更新 利用队列+微任务
  */
+const stack = [];
+let isFlushing = false;
+function addFn(handler) {
+    if (typeof handler !== 'function') return;
+    stack.push(handler);
+    if (isFlushing) return;
+    isFlushing = true;
+
+    Promise.resolve().then(() => flushStack)
+
+}
+function flushStack() {
+    const temp = stack.slice(0);
+    stack.length = 0;
+    isFlushing = false;
+    for (let i = 0; i < temp.length; i++) {
+        temp[i]();
+    }
+}
+
+

@@ -25,9 +25,21 @@ async function async1() {
     })
   console.log("bulalala1");
 }
+// async1();
+// async2();
+// async3();
 
 
 
+// async3
+// async2
+// async1
+// bulalala3
+// async2-promsie
+// bulalala2
+// async3-setTimeout
+// async1-setTimeout
+// bulalala1
 
 
 

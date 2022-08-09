@@ -3,9 +3,9 @@ const find1 = (root, val) => {
     if (root.val === val) {
         return true;
     } else if (root.val > val) {
-        return find(root.left, val);
+        return find1(root.left, val);
     } else if (root.val < val) {
-        return find(root.right, val);
+        return find1(root.right, val);
     }
     return false;
 }

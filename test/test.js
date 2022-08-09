@@ -1,26 +1,43 @@
-// 利用reduce实现
-// function flattening(arr) {
-//     if (!Array.isArray(arr)) return;
-//     return arr.reduce((a, b) => a.concat(Array.isArray(b) ? flattening(b) : b), []);
+// const api = async () => {
+//     await new Promise((resolve, reject) => {
+//         setTimeout(resolve, 1000)
+//     })
+//     return {
+//         a: 1
+//     }
 // }
 
+// const test = async () => {
+//     await 9
+//     return {
+//         b: 2
+//     }
+// }
 
-function flattening(arr) {
-    if (!Array.isArray(arr)) return null;
-    const dfs = (data) => {
-        if (!Array.isArray(arr)) return data;
-        let idx = 0;
-        let res = [];
-        while (idx < data.length) {
-            if (Array.isArray(data[idx])) {
-                data[idx++].forEach(item => Array.isArray(item) ? res.push(...dfs(item)) : res.push(item));
-            } else {
-                res.push(data[idx++]);
-            }
-        }
-        return res;
-    }
-    return dfs(arr)
-}
-let arr = [1, 2, 3, [2, 33, 4], 3, [35, 44, [67, 90, [3322]]]];
-console.log(flattening(arr))
+// api().then((res) => {
+//     console.log(res)
+// });
+// console.log(test())     //Promise { <pending> }
+// test().then(res => {
+//     console.log(res)
+// })
+
+
+// const p = new Promise((resolve,reject)=>{
+//     resolve(1)
+// });
+// p.then((res)=>{
+//     console.log(res)
+// })
+// console.log(p) //Promise
+
+
+// const delay = () => new Promise((resolve) => setTimeout(resolve, 1000));
+// const task=() => delay().then(() => console.log("d"));
+// task();
+
+
+
+
+
+

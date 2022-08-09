@@ -22,8 +22,10 @@ const lengthOfLongestSubstring = (str) => {
                 res = [...temp];
             }
             temp.splice(0, idx + 1);
-            temp.push(s[i]);
+            temp.push(str[i]);
         }
     }
     return res;
 }
+
+console.log(lengthOfLongestSubstring('abcabcbb'))

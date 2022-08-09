@@ -25,10 +25,11 @@ let twoSum2 = function (nums, target) {
     let len = nums.length;
     let obj = {};
     for (let i = 0; i < len; i++) {
-        let key = nums[i] - target;
+        let key =  target-nums[i] ;
         if (obj[key] !== undefined) {
             return [obj[key], i]
         }
         obj[nums[i]] = i;
     }
 }
+console.log(twoSum2([ 1, 14, -2 ,9,10,-1,7],9))

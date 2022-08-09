@@ -1,6 +1,6 @@
 /* 
  *隐式改变this指向
- call内部的 this指向 执行call的函数。目标是要改变该函数的内部this指向~
+ call内部的 this指向 =》执行call函数的函数。目标是要改变该函数的内部this指向~
  context对象的某个属性引用 调用函数 再执行context对象某个属性。
  */
 Function.prototype.myCall=function(...args){
