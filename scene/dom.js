@@ -1,8 +1,6 @@
 /*
- * @Author: hhl-web huanghuilin4177@100.me
  * @Date: 2022-05-15 17:27:02
- * @LastEditors: hhl-web huanghuilin4177@100.me
- * @LastEditTime: 2022-06-30 11:48:06
+ * @LastEditTime: 2022-08-26 14:09:32
  * @FilePath: /works/js/javascript/scene/dom.js
  * @Description: 如何遍历dom数据 
  */

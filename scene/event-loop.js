@@ -1,13 +1,9 @@
 /*
- * @Author: hhl-web huanghuilin4177@100.me
  * @Date: 2022-05-15 21:34:25
- * @LastEditors: hhl-web huanghuilin4177@100.me
- * @LastEditTime: 2022-07-14 16:55:25
+ * @LastEditTime: 2022-08-26 14:09:22
  * @FilePath: /works/js/javascript/scene/event-loop.js
  * @Description: 事件循环，宏任务：setTimeout的优先级>setImmediate优先级
  *                       微任务：nextTick比then优先级高
- * 
- * Copyright (c) 2022 by hhl-web huanghuilin4177@100.me, All Rights Reserved. 
  */
 // 案例1
 setImmediate(function () {

@@ -1,12 +1,8 @@
 /*
- * @Author: hhl-web huanghuilin4177@100.me
  * @Date: 2022-05-15 22:01:05
- * @LastEditors: hhl-web huanghuilin4177@100.me
- * @LastEditTime: 2022-05-15 22:02:51
+ * @LastEditTime: 2022-08-26 14:09:42
  * @FilePath: /works/js/javascript/scene/event-loop2.js
  * @Description:  事件循环 重点考察promise
- * 
- * Copyright (c) 2022 by hhl-web huanghuilin4177@100.me, All Rights Reserved. 
  */
 async function async1() {
     console.log('async1 start')

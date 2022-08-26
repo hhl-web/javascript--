@@ -25,6 +25,7 @@ async function async1() {
     })
   console.log("bulalala1");
 }
+
 // async1();
 // async2();
 // async3();
