@@ -1,5 +1,5 @@
 import {patch} from './vdom/patch.js';
-import Watch form './observer/watcher.js';
+import Watch  from './observer/watcher.js';
 import {nextTick} from './utils/index.js'
 
 export function lifycycleMixin(Vue){
